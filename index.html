@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        background-color: black;
+        color: white;
+
+        text-align: center;
+    }
+
+    #restante {
+        font-size: 32px;
+    }
+
+    #tempo {
+        font-size: 72px;
+    }
+
+    #objetivo {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <div id="timer">
+        <p id="restante">Faltam</p>
+        <P id="tempo"></P>
+        <p id="objetivo">Para o almoço.</p>
+    </div>
+</body>
+
+<script>
+    let restante = document.getElementById("restante")
+    let tempo = document.getElementById("tempo")
+    let objetivo = document.getElementById("objetivo")
+
+
+    async function run() {
+        while (true) {
+            let date = new Date()
+
+            if (date.getHours() < 11) {
+                restante.innerText = `Faltam`
+
+                if (date.getMinutes() == 0) {
+                    tempo.innerText = `${12 - date.getHours()} horas`
+                } else {
+                    tempo.innerText = `${11 - date.getHours()} horas e ${60 - date.getMinutes()} minutos`
+                }
+
+                objetivo.innerText = `para o almoço.`
+
+            } else if (date.getHours() >= 12 && date.getHours() < 14) {
+                restante.innerText = `Restam`
+
+                if (date.getMinutes() == 0) {
+                    tempo.innerText = `${14 - date.getHours()} horas`
+                } else {
+                    tempo.innerText = `${13 - date.getHours()} horas e ${60 - date.getMinutes()} minutos`
+                }
+
+                objetivo.innerText = `até o fim do almoço.`
+            } else {
+                restante.innerText = `Faltam`
+
+                if (date.getMinutes() == 0) {
+                    tempo.innerText = `${35 - date.getHours()} horas`
+                } else {
+                    tempo.innerText = `${35 - date.getHours()} horas e ${60 - date.getMinutes()} minutos`
+                }
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 500))
+        }
+    }
+
+    run();
+</script>
+
+</html>
