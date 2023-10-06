@@ -52,8 +52,10 @@
 
                 if (date.getMinutes() == 0) {
                     tempo.innerText = `${11 - date.getHours()} horas`
-                } else {
+                } else if (date.getHours() != 10){
                     tempo.innerText = `${10 - date.getHours()} horas e ${60 - date.getMinutes()} minutos`
+                } else {
+                    tempo.innerText = `${60 - date.getMinutes()} minutos`
                 }
 
                 objetivo.innerText = `para o almoço.`
@@ -63,8 +65,10 @@
 
                 if (date.getMinutes() == 0) {
                     tempo.innerText = `${14 - date.getHours()} horas`
-                } else {
+                } else if (date.getHours() != 13) {
                     tempo.innerText = `${13 - date.getHours()} horas e ${60 - date.getMinutes()} minutos`
+                } else {
+                    tempo.innerText = `${60 - date.getMinutes()} minutos`
                 }
 
                 objetivo.innerText = `até o fim do almoço.`
@@ -73,8 +77,10 @@
 
                 if (date.getMinutes() == 0) {
                     tempo.innerText = `${36 - date.getHours()} horas`
-                } else {
+                } else if (date.getHours() != 35) {
                     tempo.innerText = `${35 - date.getHours()} horas e ${60 - date.getMinutes()} minutos`
+                } else {
+                    tempo.innerText = `${60 - date.getMinutes()} minutos`
                 }
             }
 
